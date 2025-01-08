@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.MaterielInfoMapper">
+
+    <!-- 分页获取物料信息 -->
+    <select id="selectMaterielPage" resultType="java.util.LinkedHashMap">
+        select
+            mi.id,
+            mi.code,
+            mi.name,
+            mi.model,
+            mi.unit,
+            mi.materiel_type,
+            mi.materiel_sort,
+            mi.create_date,
+            mi.images,
+            mi.template_id,
+            mi.detection_ids
+        from
+            materiel_info mi
+        where 1 = 1
+        <if test="materielInfo.code != null and materielInfo.code != ''">
+            AND mi.code LIKE CONCAT('%',#{materielInfo.code},'%')
+        </if>
+        <if test="materielInfo.name != null and materielInfo.name != ''">
+            AND mi.name LIKE CONCAT('%',#{materielInfo.name},'%')
+        </if>
+        <if test="materielInfo.model != null and materielInfo.model != ''">
+            AND mi.model LIKE CONCAT('%',#{materielInfo.model},'%')
+        </if>
+        <if test="materielInfo.unit != null and materielInfo.unit != ''">
+            AND mi.unit LIKE CONCAT('%',#{materielInfo.unit},'%')
+        </if>
+        order by
+            mi.create_date desc
+
+    </select>
+
+    <!-- 本月检测数量/单 -->
+    <select id="selectIncomeMonth" resultType="java.lang.Integer">
+        SELECT
+            sum( num )
+        FROM
+            (
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    income_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' ) UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    ship_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' ) UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    process_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' )
+            ) AS total
+    </select>
+
+    <!-- 本月通过单数 -->
+    <select id="selectWorkOrderMonth" resultType="java.lang.Integer">
+        SELECT
+            sum( num )
+        FROM
+            (
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    income_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' )
+                  AND pr.check_status = '1' UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    ship_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' )
+                  AND pr.check_status = '1' UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    process_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y%m' ) = DATE_FORMAT( CURDATE(), '%Y%m' )
+                  AND pr.check_status = '1'
+            ) AS total
+    </select>
+
+    <!-- 本年检测数量/单 -->
+    <select id="selectIncomeYear" resultType="java.lang.Integer">
+        SELECT
+            sum( num )
+        FROM
+            (
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    income_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' ) UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    ship_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' ) UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    process_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' )
+            ) AS total
+    </select>
+
+    <!-- 本年通过单数 -->
+    <select id="selectWorkOrderYear" resultType="java.lang.Integer">
+        SELECT
+            sum( num )
+        FROM
+            (
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    income_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' )
+                  AND pr.check_status = '1' UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    ship_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' )
+                  AND pr.check_status = '1' UNION ALL
+                SELECT
+                    IFNULL( count( pr.id ), 0 ) AS num
+                FROM
+                    process_check_info pr
+                WHERE
+                    DATE_FORMAT( pr.check_date, '%Y' ) = DATE_FORMAT( CURDATE(), '%Y' )
+                  AND pr.check_status = '1'
+            ) AS total
+    </select>
+
+    <!-- 查询十天内检测统计1 -->
+    <select id="selectPaymentRecord1" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(count(pr.id), 0) AS amount
+        FROM
+            (
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+                LEFT JOIN income_check_info pr ON (
+                        DATE_FORMAT( pr.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+                )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+
+    <!-- 查询十天内检测统计2 -->
+    <select id="selectPaymentRecord2" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(count(pr.id), 0) AS amount
+        FROM
+            (
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+                LEFT JOIN process_check_info pr ON (
+                        DATE_FORMAT( pr.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+                )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+
+    <!-- 查询十天内检测统计3 -->
+    <select id="selectPaymentRecord3" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(count(pr.id), 0) AS amount
+        FROM
+            (
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+                SELECT
+                    DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+                LEFT JOIN ship_check_info pr ON (
+                        DATE_FORMAT( pr.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+                )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+
+    <!-- 查询十天内通过统计1 -->
+    <select id="selectOrderRecord1" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(COUNT(oi.id), 0) AS amount
+        FROM
+            (
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+            LEFT JOIN income_check_info oi ON (
+            DATE_FORMAT( oi.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+            AND oi.check_status = '1'
+            )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+
+    <!-- 查询十天内通过统计2 -->
+    <select id="selectOrderRecord2" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(COUNT(oi.id), 0) AS amount
+        FROM
+            (
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+            LEFT JOIN process_check_info oi ON (
+            DATE_FORMAT( oi.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+            AND oi.check_status = '1'
+            )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+
+    <!-- 查询十天内通过统计3 -->
+    <select id="selectOrderRecord3" resultType="java.util.LinkedHashMap">
+        SELECT
+            DATE_FORMAT( spo.days, '%m-%d' ) AS days,
+            IFNULL(COUNT(oi.id), 0) AS amount
+        FROM
+            (
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 0 DAY ) days UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 1 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 2 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 3 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 4 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 5 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 6 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 7 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 8 DAY ) UNION
+            SELECT
+            DATE_SUB( curdate(), INTERVAL + 9 DAY )) spo
+            LEFT JOIN ship_check_info oi ON (
+            DATE_FORMAT( oi.check_date, '%Y-%m-%d' ) = DATE_FORMAT( spo.days, '%Y-%m-%d' )
+            AND oi.check_status = '1'
+            )
+        GROUP BY
+            days
+        ORDER BY
+            days ASC
+    </select>
+</mapper>

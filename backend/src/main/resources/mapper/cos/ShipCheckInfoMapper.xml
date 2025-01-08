@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.ShipCheckInfoMapper">
+
+    <!-- 分页获取出货检验信息 -->
+    <select id="selectShipCheckPage" resultType="java.util.LinkedHashMap">
+        select
+            sci.id,
+            sci.code,
+            sci.name,
+            sci.materiel_id,
+            sci.materiel_name,
+            sci.unit,
+            sci.model,
+            sci.clientele_id,
+            sci.staff_id,
+            sci.clientele_name,
+            sci.batch_number,
+            sci.ship_num,
+            sci.ship_date,
+            sci.check_num,
+            sci.check_date,
+            sci.check_status,
+            sci.receipt_status,
+            sci.content,
+            sci.fatal_defect_rate,
+            sci.critical_defect_rate,
+            sci.minor_defect_rate,
+            sci.fatal_defect_num,
+            sci.critical_defect_num,
+            sci.minor_defect_num,
+            sci.unqualified_num,
+            si.name as staffName,
+            mi.code as materielCode
+        from
+            ship_check_info sci
+        left join staff_info si on
+        (si.id = sci.staff_id)
+        left join materiel_info mi on
+        (mi.id = sci.materiel_id)
+        where
+            1 = 1
+        <if test="shipCheckInfo.code != null and shipCheckInfo.code != ''">
+            AND sci.code LIKE CONCAT('%',#{shipCheckInfo.code},'%')
+        </if>
+        <if test="shipCheckInfo.name != null and shipCheckInfo.name != ''">
+            AND sci.name LIKE CONCAT('%',#{shipCheckInfo.name},'%')
+        </if>
+        <if test="shipCheckInfo.materielName != null and shipCheckInfo.materielName != ''">
+            AND sci.materiel_name LIKE CONCAT('%',#{shipCheckInfo.materielName},'%')
+        </if>
+        order by
+            id desc
+
+    </select>
+</mapper>

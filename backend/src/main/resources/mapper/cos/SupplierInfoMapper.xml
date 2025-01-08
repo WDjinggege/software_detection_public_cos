@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.SupplierInfoMapper">
+
+    <!-- 分页获取供应商信息 -->
+    <select id="selectSupplierPage" resultType="java.util.LinkedHashMap">
+        select
+            si.id,
+            si.code,
+            si.name,
+            si.abbreviation,
+            si.supplier_level,
+            si.score,
+            si.phone,
+            si.remark,
+            si.create_date
+        from
+            supplier_info si
+        where
+            1 = 1
+        <if test="supplierInfo.code != null and supplierInfo.code != ''">
+            AND si.code LIKE CONCAT('%',#{supplierInfo.code},'%')
+        </if>
+        <if test="supplierInfo.name != null and supplierInfo.name != ''">
+            AND si.name LIKE CONCAT('%',#{supplierInfo.name},'%')
+        </if>
+        <if test="supplierInfo.phone != null and supplierInfo.phone != ''">
+            AND si.phone LIKE CONCAT('%',#{supplierInfo.phone},'%')
+        </if>
+        order by
+            si.create_date desc
+    </select>
+</mapper>

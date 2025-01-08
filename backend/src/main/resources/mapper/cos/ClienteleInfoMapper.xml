@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.ClienteleInfoMapper">
+
+    <!-- 分页获取客户信息 -->
+    <select id="selectClientelePage" resultType="java.util.LinkedHashMap">
+        select
+        ci.id,
+        ci.code,
+        ci.name,
+        ci.abbreviation,
+        ci.`type`,
+        ci.phone,
+        ci.contact,
+        ci.contact_phone,
+        ci.create_date
+        from clientele_info ci
+        WHERE 1 = 1
+        <if test="clienteleInfo.code != null and clienteleInfo.code != ''">
+            AND ci.code LIKE CONCAT('%',#{clienteleInfo.code},'%')
+        </if>
+        <if test="clienteleInfo.name != null and clienteleInfo.name != ''">
+            AND ci.name LIKE CONCAT('%',#{clienteleInfo.name},'%')
+        </if>
+        <if test="clienteleInfo.phone != null and clienteleInfo.phone != ''">
+            AND ci.phone LIKE CONCAT('%',#{clienteleInfo.phone},'%')
+        </if>
+        order by ci.create_date desc
+
+    </select>
+</mapper>

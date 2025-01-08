@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.FlawInfoMapper">
+
+    <!-- 分页获取常见缺陷信息 -->
+    <select id="selectFlawPage" resultType="java.util.LinkedHashMap">
+        select
+            fi.id,
+            fi.code,
+            fi.name,
+            fi.content,
+            fi.detection_item,
+            fi.flaw_level,
+            fi.create_date
+        from
+            flaw_info fi
+        WHERE 1 = 1
+        <if test="flawInfo.code != null and flawInfo.code != ''">
+            AND fi.code LIKE CONCAT('%',#{flawInfo.code},'%')
+        </if>
+        <if test="flawInfo.name != null and flawInfo.name != ''">
+            AND fi.name LIKE CONCAT('%',#{flawInfo.name},'%')
+        </if>
+        order by
+            fi.create_date desc
+    </select>
+</mapper>

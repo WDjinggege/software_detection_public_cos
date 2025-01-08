@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.IncomeCheckInfoMapper">
+
+    <!-- 分页获取来料检验信息 -->
+    <select id="selectIncomeCheckPage" resultType="java.util.LinkedHashMap">
+        select
+        ici.id,
+        ici.code,
+        ici.name,
+        ici.materiel_id,
+        ici.materiel_code,
+        ici.materiel_name,
+        ici.unit,
+        ici.supplier_id,
+        ici.abbreviation,
+        ici.batch_number,
+        ici.receive_quantity,
+        ici.check_quantity,
+        ici.staff_id,
+        ici.incoming_date,
+        ici.unqualified_quantity,
+        ici.check_date,
+        ici.check_status,
+        ici.fatal_defect_rate,
+        ici.critical_defect_rate,
+        ici.minor_defect_rate,
+        ici.fatal_defect_num,
+        ici.critical_defect_num,
+        ici.minor_defect_num,
+        ici.receipt_status,
+        ici.content,
+        si.name as staffName,
+        sui.name as supplierName
+        from
+        income_check_info ici
+        left join staff_info si on
+        (si.id = ici.staff_id)
+        left join supplier_info sui on
+        (sui.id = ici.supplier_id)
+        where 1 = 1
+        <if test="incomeCheckInfo.code != null and incomeCheckInfo.code != ''">
+            AND ici.code LIKE CONCAT('%',#{incomeCheckInfo.code},'%')
+        </if>
+        <if test="incomeCheckInfo.name != null and incomeCheckInfo.name != ''">
+            AND ici.name LIKE CONCAT('%',#{incomeCheckInfo.name},'%')
+        </if>
+        <if test="incomeCheckInfo.materielName != null and incomeCheckInfo.materielName != ''">
+            AND ici.materiel_name LIKE CONCAT('%',#{incomeCheckInfo.materielName},'%')
+        </if>
+        order by
+        id desc
+    </select>
+</mapper>

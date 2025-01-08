@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.ProcessCheckInfoMapper">
+
+    <!-- 分页获取过程检验信息 -->
+    <select id="selectProcessPage" resultType="java.util.LinkedHashMap">
+        select
+        pci.id,
+        pci.code,
+        pci.name,
+        pci.check_type,
+        pci.order_id,
+        pci.order_name,
+        pci.station_id,
+        pci.station_name,
+        pci.check_num,
+        pci.materiel_id,
+        pci.materiel_name,
+        pci.unit,
+        pci.model,
+        pci.process_code,
+        pci.process_name,
+        pci.task_code,
+        pci.task_name,
+        pci.unqualified_num,
+        pci.qualified_num,
+        pci.fatal_defect_num,
+        pci.critical_defect_num,
+        pci.minor_defect_num,
+        pci.check_date,
+        pci.check_quantity,
+        pci.staff_id,
+        pci.check_status,
+        pci.receipt_status,
+        pci.content,
+        si.name as staffName,
+        oi.code as orderCode,
+        sti.code as stationCode,
+        mi.code as materielCode
+        from
+        process_check_info pci
+        left join staff_info si on
+        (si.id = pci.staff_id)
+        left join station_info sti on
+        (sti.id = pci.station_id)
+        left join order_info oi on
+        (oi.id = pci.order_id)
+        left join materiel_info mi on
+        (mi.id = pci.materiel_id)
+        where
+        1 = 1
+        <if test="processCheckInfo.code != null and processCheckInfo.code != ''">
+            AND pci.code LIKE CONCAT('%',#{processCheckInfo.code},'%')
+        </if>
+        <if test="processCheckInfo.name != null and processCheckInfo.name != ''">
+            AND pci.name LIKE CONCAT('%',#{processCheckInfo.name},'%')
+        </if>
+        <if test="processCheckInfo.materielName != null and processCheckInfo.materielName != ''">
+            AND pci.name LIKE CONCAT('%',#{processCheckInfo.materielName},'%')
+        </if>
+        <if test="processCheckInfo.stationName != null and processCheckInfo.stationName != ''">
+            AND pci.station_name LIKE CONCAT('%',#{processCheckInfo.stationName},'%')
+        </if>
+        order by
+        pci.id desc
+
+    </select>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.cos.dao.DetectionInfoMapper">
+
+    <!-- 分页获取检测项信息 -->
+    <select id="selectDetectionPage" resultType="java.util.LinkedHashMap">
+        select di.id,
+        di.code,
+        di.name,
+        di.detection_item,
+        di.check_util,
+        di.content,
+        di.create_date
+        from detection_info di
+        WHERE 1 = 1
+        <if test="detectionInfo.code != null and detectionInfo.code != ''">
+            AND di.code LIKE CONCAT('%',#{detectionInfo.code},'%')
+        </if>
+        <if test="detectionInfo.name != null and detectionInfo.name != ''">
+            AND di.name LIKE CONCAT('%',#{detectionInfo.name},'%')
+        </if>
+        order by di.create_date desc
+    </select>
+</mapper>
