@@ -33,10 +33,10 @@ public class IncomeCheckInfoController {
     private final IDetectionChcekInfoService dictionaryChcekInfoService;
 
     /**
-     * 分页获取来料检验信息
+     * 分页获取内部检验信息
      *
      * @param page            分页对象
-     * @param incomeCheckInfo 来料检验信息
+     * @param incomeCheckInfo 内部检验信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -45,9 +45,9 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 来料检验信息详情
+     * 内部检验信息详情
      *
-     * @param id 来料检验ID
+     * @param id 内部检验ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -56,7 +56,7 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 来料检验信息列表
+     * 内部检验信息列表
      *
      * @return 结果
      */
@@ -66,9 +66,9 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 新增来料检验信息
+     * 新增内部检验信息
      *
-     * @param incomeCheckInfo 来料检验信息
+     * @param incomeCheckInfo 内部检验信息
      * @return 结果
      */
     @PostMapping
@@ -78,9 +78,9 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 填报来料检测信息
+     * 填报内部检测信息
      *
-     * @param incomeCheckInfo 来料检测
+     * @param incomeCheckInfo 内部检测
      * @return 结果
      * @throws FebsException
      */
@@ -124,9 +124,9 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 修改来料检验信息
+     * 修改内部检验信息
      *
-     * @param incomeCheckInfo 来料检验信息
+     * @param incomeCheckInfo 内部检验信息
      * @return 结果
      */
     @PutMapping
@@ -135,10 +135,10 @@ public class IncomeCheckInfoController {
     }
 
     /**
-     * 删除来料检验信息
+     * 删除内部检验信息
      *
      * @param ids ids
-     * @return 来料检验信息
+     * @return 内部检验信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

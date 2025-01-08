@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 来料检验
+ * 内部检验
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */
@@ -60,17 +60,17 @@ public class IncomeCheckInfo implements Serializable {
     private String unit;
 
     /**
-     * 供应商ID
+     * 测试企业ID
      */
     private Integer supplierId;
 
     /**
-     * 供应商简称
+     * 测试企业简称
      */
     private String abbreviation;
 
     /**
-     * 供应商批次号
+     * 测试企业批次号
      */
     private String batchNumber;
 
@@ -90,7 +90,7 @@ public class IncomeCheckInfo implements Serializable {
     private Integer staffId;
 
     /**
-     * 来料日期
+     * 内部日期
      */
     private String incomingDate;
 

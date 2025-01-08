@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 过程检验
+ * 外部检验
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */

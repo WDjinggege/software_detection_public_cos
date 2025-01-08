@@ -17,10 +17,10 @@ import java.util.LinkedHashMap;
 public class ShipCheckInfoServiceImpl extends ServiceImpl<ShipCheckInfoMapper, ShipCheckInfo> implements IShipCheckInfoService {
 
     /**
-     * 分页获取出货检验信息
+     * 分页获取专家检验信息
      *
      * @param page          分页对象
-     * @param shipCheckInfo 出货检验信息
+     * @param shipCheckInfo 专家检验信息
      * @return 结果
      */
     @Override

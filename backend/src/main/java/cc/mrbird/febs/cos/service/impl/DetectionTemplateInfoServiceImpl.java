@@ -43,7 +43,7 @@ public class DetectionTemplateInfoServiceImpl extends ServiceImpl<DetectionTempl
     /**
      * 根据类型获取物料
      *
-     * @param type 类型（1.来料 2.过程 3.出货）
+     * @param type 类型（1.内部 2.外部 3.专家）
      * @return 结果
      */
     @Override
@@ -56,7 +56,7 @@ public class DetectionTemplateInfoServiceImpl extends ServiceImpl<DetectionTempl
         List<Integer> detectionIds = new ArrayList<>();
         for (DetectionTemplateInfo detectionTemplateInfo : templateInfoList) {
             if ("1".equals(type)) {
-                if (detectionTemplateInfo.getCheckType().contains("来料检验")) {
+                if (detectionTemplateInfo.getCheckType().contains("内部检验")) {
                     detectionIds.add(detectionTemplateInfo.getId());
                 }
             }

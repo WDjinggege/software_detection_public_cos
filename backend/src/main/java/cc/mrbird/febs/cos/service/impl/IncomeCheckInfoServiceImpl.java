@@ -17,10 +17,10 @@ import java.util.LinkedHashMap;
 public class IncomeCheckInfoServiceImpl extends ServiceImpl<IncomeCheckInfoMapper, IncomeCheckInfo> implements IIncomeCheckInfoService {
 
     /**
-     * 分页获取来料检验信息
+     * 分页获取内部检验信息
      *
      * @param page            分页对象
-     * @param incomeCheckInfo 来料检验信息
+     * @param incomeCheckInfo 内部检验信息
      * @return 结果
      */
     @Override

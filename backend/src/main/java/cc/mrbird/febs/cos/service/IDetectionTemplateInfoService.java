@@ -27,7 +27,7 @@ public interface IDetectionTemplateInfoService extends IService<DetectionTemplat
     /**
      * 根据类型获取物料
      *
-     * @param type 类型（1.来料 2.过程 3.出货）
+     * @param type 类型（1.内部 2.外部 3.专家）
      * @return 结果
      */
     List<MaterielInfo> selectMaterielByTemplate(String type);

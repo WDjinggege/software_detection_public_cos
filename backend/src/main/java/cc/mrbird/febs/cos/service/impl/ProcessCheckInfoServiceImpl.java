@@ -17,10 +17,10 @@ import java.util.LinkedHashMap;
 public class ProcessCheckInfoServiceImpl extends ServiceImpl<ProcessCheckInfoMapper, ProcessCheckInfo> implements IProcessCheckInfoService {
 
     /**
-     * 分页获取过程检验信息
+     * 分页获取外部检验信息
      *
      * @param page             分页对象
-     * @param processCheckInfo 过程检验信息
+     * @param processCheckInfo 外部检验信息
      * @return 结果
      */
     @Override

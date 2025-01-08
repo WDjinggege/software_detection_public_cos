@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
 public interface IProcessCheckInfoService extends IService<ProcessCheckInfo> {
 
     /**
-     * 分页获取过程检验信息
+     * 分页获取外部检验信息
      *
      * @param page             分页对象
-     * @param processCheckInfo 过程检验信息
+     * @param processCheckInfo 外部检验信息
      * @return 结果
      */
     IPage<LinkedHashMap<String, Object>> selectProcessPage(Page<ProcessCheckInfo> page, ProcessCheckInfo processCheckInfo);

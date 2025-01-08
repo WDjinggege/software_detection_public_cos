@@ -34,10 +34,10 @@ public class ShipCheckInfoController {
     private final IDetectionChcekInfoService dictionaryChcekInfoService;
 
     /**
-     * 分页获取出货检验信息
+     * 分页获取专家检验信息
      *
      * @param page          分页对象
-     * @param shipCheckInfo 出货检验信息
+     * @param shipCheckInfo 专家检验信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -46,9 +46,9 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 出货检验信息详情
+     * 专家检验信息详情
      *
-     * @param id 出货检验ID
+     * @param id 专家检验ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -57,7 +57,7 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 出货检验信息列表
+     * 专家检验信息列表
      *
      * @return 结果
      */
@@ -67,9 +67,9 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 填报出货检测信息
+     * 填报专家检测信息
      *
-     * @param shipCheckInfo 出货检测
+     * @param shipCheckInfo 专家检测
      * @return 结果
      * @throws FebsException
      */
@@ -113,9 +113,9 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 新增出货检验信息
+     * 新增专家检验信息
      *
-     * @param shipCheckInfo 出货检验信息
+     * @param shipCheckInfo 专家检验信息
      * @return 结果
      */
     @PostMapping
@@ -125,9 +125,9 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 修改出货检验信息
+     * 修改专家检验信息
      *
-     * @param shipCheckInfo 出货检验信息
+     * @param shipCheckInfo 专家检验信息
      * @return 结果
      */
     @PutMapping
@@ -136,10 +136,10 @@ public class ShipCheckInfoController {
     }
 
     /**
-     * 删除出货检验信息
+     * 删除专家检验信息
      *
      * @param ids ids
-     * @return 出货检验信息
+     * @return 专家检验信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

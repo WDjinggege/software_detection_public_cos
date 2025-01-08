@@ -24,10 +24,10 @@ public class SupplierInfoController {
     private final ISupplierInfoService supplierInfoService;
 
     /**
-     * 分页获取供应商信息
+     * 分页获取测试企业信息
      *
      * @param page         分页对象
-     * @param supplierInfo 供应商信息
+     * @param supplierInfo 测试企业信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -36,9 +36,9 @@ public class SupplierInfoController {
     }
 
     /**
-     * 供应商信息详情
+     * 测试企业信息详情
      *
-     * @param id 供应商ID
+     * @param id 测试企业ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -47,7 +47,7 @@ public class SupplierInfoController {
     }
 
     /**
-     * 供应商信息列表
+     * 测试企业信息列表
      *
      * @return 结果
      */
@@ -57,9 +57,9 @@ public class SupplierInfoController {
     }
 
     /**
-     * 新增供应商信息
+     * 新增测试企业信息
      *
-     * @param supplierInfo 供应商信息
+     * @param supplierInfo 测试企业信息
      * @return 结果
      */
     @PostMapping
@@ -70,9 +70,9 @@ public class SupplierInfoController {
     }
 
     /**
-     * 修改供应商信息
+     * 修改测试企业信息
      *
-     * @param supplierInfo 供应商信息
+     * @param supplierInfo 测试企业信息
      * @return 结果
      */
     @PutMapping
@@ -81,10 +81,10 @@ public class SupplierInfoController {
     }
 
     /**
-     * 删除供应商信息
+     * 删除测试企业信息
      *
      * @param ids ids
-     * @return 供应商信息
+     * @return 测试企业信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

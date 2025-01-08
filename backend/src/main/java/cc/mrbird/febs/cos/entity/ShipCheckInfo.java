@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 出货检验
+ * 专家检验
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */
@@ -80,7 +80,7 @@ public class ShipCheckInfo implements Serializable {
     private Integer shipNum;
 
     /**
-     * 出货日期
+     * 专家日期
      */
     private String shipDate;
 

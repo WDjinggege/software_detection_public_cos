@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
 public interface IncomeCheckInfoMapper extends BaseMapper<IncomeCheckInfo> {
 
     /**
-     * 分页获取来料检验信息
+     * 分页获取内部检验信息
      *
      * @param page            分页对象
-     * @param incomeCheckInfo 来料检验信息
+     * @param incomeCheckInfo 内部检验信息
      * @return 结果
      */
     IPage<LinkedHashMap<String, Object>> selectIncomeCheckPage(Page<IncomeCheckInfo> page, @Param("incomeCheckInfo") IncomeCheckInfo incomeCheckInfo);

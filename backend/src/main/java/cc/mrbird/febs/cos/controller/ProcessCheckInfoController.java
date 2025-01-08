@@ -34,10 +34,10 @@ public class ProcessCheckInfoController {
     private final IDetectionChcekInfoService dictionaryChcekInfoService;
 
     /**
-     * 分页获取过程检验信息
+     * 分页获取外部检验信息
      *
      * @param page             分页对象
-     * @param processCheckInfo 过程检验信息
+     * @param processCheckInfo 外部检验信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -46,9 +46,9 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 过程检验信息详情
+     * 外部检验信息详情
      *
-     * @param id 过程检验ID
+     * @param id 外部检验ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -57,7 +57,7 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 过程检验信息列表
+     * 外部检验信息列表
      *
      * @return 结果
      */
@@ -67,9 +67,9 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 填报来料检测信息
+     * 填报内部检测信息
      *
-     * @param processCheckInfo 来料检测
+     * @param processCheckInfo 内部检测
      * @return 结果
      * @throws FebsException
      */
@@ -103,9 +103,9 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 新增过程检验信息
+     * 新增外部检验信息
      *
-     * @param processCheckInfo 过程检验信息
+     * @param processCheckInfo 外部检验信息
      * @return 结果
      */
     @PostMapping
@@ -115,9 +115,9 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 修改过程检验信息
+     * 修改外部检验信息
      *
-     * @param processCheckInfo 过程检验信息
+     * @param processCheckInfo 外部检验信息
      * @return 结果
      */
     @PutMapping
@@ -126,10 +126,10 @@ public class ProcessCheckInfoController {
     }
 
     /**
-     * 删除过程检验信息
+     * 删除外部检验信息
      *
      * @param ids ids
-     * @return 过程检验信息
+     * @return 外部检验信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

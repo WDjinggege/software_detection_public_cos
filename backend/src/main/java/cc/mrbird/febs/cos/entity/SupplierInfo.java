@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 供应商信息
+ * 测试企业信息
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */
@@ -29,12 +29,12 @@ public class SupplierInfo implements Serializable {
     private Integer id;
 
     /**
-     * 供应商编码
+     * 测试企业编码
      */
     private String code;
 
     /**
-     * 供应商名称
+     * 测试企业名称
      */
     private String name;
 
@@ -44,12 +44,12 @@ public class SupplierInfo implements Serializable {
     private String abbreviation;
 
     /**
-     * 供应商等级
+     * 测试企业等级
      */
     private String supplierLevel;
 
     /**
-     * 供应商评分
+     * 测试企业评分
      */
     private BigDecimal score;
 

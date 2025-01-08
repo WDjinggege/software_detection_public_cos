@@ -17,10 +17,10 @@ import java.util.LinkedHashMap;
 public class SupplierInfoServiceImpl extends ServiceImpl<SupplierInfoMapper, SupplierInfo> implements ISupplierInfoService {
 
     /**
-     * 分页获取供应商信息
+     * 分页获取测试企业信息
      *
      * @param page         分页对象
-     * @param supplierInfo 供应商信息
+     * @param supplierInfo 测试企业信息
      * @return 结果
      */
     @Override

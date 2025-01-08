@@ -119,7 +119,7 @@ public class MaterielInfoServiceImpl extends ServiceImpl<MaterielInfoMapper, Mat
         // 返回数据
         LinkedHashMap<String, Object> result = new LinkedHashMap<>();
 
-        // 来料检测
+        // 内部检测
         List<IncomeCheckInfo> incomeCheckInfos = incomeCheckInfoService.list(Wrappers.<IncomeCheckInfo>lambdaQuery().ne(IncomeCheckInfo::getCheckStatus, "0"));
         // 接收数量
         int incomeReceive = 0;
@@ -140,7 +140,7 @@ public class MaterielInfoServiceImpl extends ServiceImpl<MaterielInfoMapper, Mat
         result.put("incomeNoQualified", incomeNoQualified);
         result.put("incomeQualified", incomeQualified);
 
-        // 过程检测
+        // 外部检测
         List<ProcessCheckInfo> processCheckInfos = processCheckInfoService.list(Wrappers.<ProcessCheckInfo>lambdaQuery().ne(ProcessCheckInfo::getCheckStatus, "0"));
         // 接收数量
         int processReceive = 0;
@@ -161,7 +161,7 @@ public class MaterielInfoServiceImpl extends ServiceImpl<MaterielInfoMapper, Mat
         result.put("processNoQualified", processNoQualified);
         result.put("processQualified", processQualified);
 
-        // 出货检测
+        // 专家检测
         List<ShipCheckInfo> shipCheckInfos = shipCheckInfoService.list(Wrappers.<ShipCheckInfo>lambdaQuery().ne(ShipCheckInfo::getCheckStatus, "0"));
         // 接收数量
         int shipReceive = 0;
