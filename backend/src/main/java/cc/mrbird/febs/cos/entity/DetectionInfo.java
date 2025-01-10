@@ -38,7 +38,7 @@ public class DetectionInfo implements Serializable {
     private String name;
 
     /**
-     * 检测项类型（1.尺寸 2.外观 3.重量 4.性能 5.成分）
+     * 检测项类型（1.性能 2.并发 测试3.压力测试 4.环境测试 5.流程测试）
      */
     private String detectionItem;
 

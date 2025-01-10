@@ -44,10 +44,10 @@ public class MaterielInfoServiceImpl extends ServiceImpl<MaterielInfoMapper, Mat
     private final IShipCheckInfoService shipCheckInfoService;
 
     /**
-     * 分页获取物料信息
+     * 分页获取项目模块信息
      *
      * @param page         分页对象
-     * @param materielInfo 物料信息
+     * @param materielInfo 项目模块信息
      * @return 结果
      */
     @Override
@@ -77,9 +77,9 @@ public class MaterielInfoServiceImpl extends ServiceImpl<MaterielInfoMapper, Mat
         Integer staffNum = staffInfoMapper.selectCount(Wrappers.<StaffInfo>lambdaQuery());
         // 客户数量
         Integer clienteleNum = clienteleInfoMapper.selectCount(Wrappers.<ClienteleInfo>lambdaQuery());
-        // 工作站量
+        // 测试环境量
         Integer stationNum = stationInfoMapper.selectCount(Wrappers.<StationInfo>lambdaQuery());
-        // 物料数量
+        // 项目模块数量
         Integer materielNum = materielInfoMapper.selectCount(Wrappers.<MaterielInfo>lambdaQuery());
         // 十天内检测记录
         List<LinkedHashMap<String, Object>> paymentRecord1 = baseMapper.selectPaymentRecord1();

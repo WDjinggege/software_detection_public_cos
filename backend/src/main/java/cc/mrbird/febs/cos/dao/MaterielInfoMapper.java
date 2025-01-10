@@ -16,10 +16,10 @@ import java.util.List;
 public interface MaterielInfoMapper extends BaseMapper<MaterielInfo> {
 
     /**
-     * 分页获取物料信息
+     * 分页获取项目模块信息
      *
      * @param page         分页对象
-     * @param materielInfo 物料信息
+     * @param materielInfo 项目模块信息
      * @return 结果
      */
     IPage<LinkedHashMap<String, Object>> selectMaterielPage(Page<MaterielInfo> page, @Param("materielInfo") MaterielInfo materielInfo);

@@ -31,10 +31,10 @@ public class MaterielInfoController {
     private final IDetectionInfoService datasetInfoService;
 
     /**
-     * 分页获取物料信息
+     * 分页获取项目模块信息
      *
      * @param page         分页对象
-     * @param materielInfo 物料信息
+     * @param materielInfo 项目模块信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -43,9 +43,9 @@ public class MaterielInfoController {
     }
 
     /**
-     * 根据物料ID获取检测项
+     * 根据项目模块ID获取检测项
      *
-     * @param id 物料ID
+     * @param id 项目模块ID
      * @return 结果
      */
     @GetMapping("/checkItem")
@@ -76,9 +76,9 @@ public class MaterielInfoController {
     }
 
     /**
-     * 物料信息详情
+     * 项目模块信息详情
      *
-     * @param id 物料ID
+     * @param id 项目模块ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -87,7 +87,7 @@ public class MaterielInfoController {
     }
 
     /**
-     * 物料信息列表
+     * 项目模块信息列表
      *
      * @return 结果
      */
@@ -97,9 +97,9 @@ public class MaterielInfoController {
     }
 
     /**
-     * 新增物料信息
+     * 新增项目模块信息
      *
-     * @param materielInfo 物料信息
+     * @param materielInfo 项目模块信息
      * @return 结果
      */
     @PostMapping
@@ -110,9 +110,9 @@ public class MaterielInfoController {
     }
 
     /**
-     * 修改物料信息
+     * 修改项目模块信息
      *
-     * @param materielInfo 物料信息
+     * @param materielInfo 项目模块信息
      * @return 结果
      */
     @PutMapping
@@ -121,10 +121,10 @@ public class MaterielInfoController {
     }
 
     /**
-     * 删除物料信息
+     * 删除项目模块信息
      *
      * @param ids ids
-     * @return 物料信息
+     * @return 项目模块信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

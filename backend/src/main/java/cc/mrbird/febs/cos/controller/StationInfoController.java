@@ -24,10 +24,10 @@ public class StationInfoController {
     private final IStationInfoService stationInfoService;
 
     /**
-     * 分页获取工作站信息
+     * 分页获取测试环境信息
      *
      * @param page        分页对象
-     * @param stationInfo 工作站信息
+     * @param stationInfo 测试环境信息
      * @return 结果
      */
     @GetMapping("/page")
@@ -36,9 +36,9 @@ public class StationInfoController {
     }
 
     /**
-     * 工作站信息详情
+     * 测试环境信息详情
      *
-     * @param id 工作站ID
+     * @param id 测试环境ID
      * @return 结果
      */
     @GetMapping("/{id}")
@@ -47,7 +47,7 @@ public class StationInfoController {
     }
 
     /**
-     * 工作站信息列表
+     * 测试环境信息列表
      *
      * @return 结果
      */
@@ -57,9 +57,9 @@ public class StationInfoController {
     }
 
     /**
-     * 新增工作站信息
+     * 新增测试环境信息
      *
-     * @param stationInfo 工作站信息
+     * @param stationInfo 测试环境信息
      * @return 结果
      */
     @PostMapping
@@ -70,9 +70,9 @@ public class StationInfoController {
     }
 
     /**
-     * 修改工作站信息
+     * 修改测试环境信息
      *
-     * @param stationInfo 工作站信息
+     * @param stationInfo 测试环境信息
      * @return 结果
      */
     @PutMapping
@@ -81,10 +81,10 @@ public class StationInfoController {
     }
 
     /**
-     * 删除工作站信息
+     * 删除测试环境信息
      *
      * @param ids ids
-     * @return 工作站信息
+     * @return 测试环境信息
      */
     @DeleteMapping("/{ids}")
     public R deleteByIds(@PathVariable("ids") List<Integer> ids) {

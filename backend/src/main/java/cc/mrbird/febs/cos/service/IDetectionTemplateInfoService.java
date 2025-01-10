@@ -25,7 +25,7 @@ public interface IDetectionTemplateInfoService extends IService<DetectionTemplat
     IPage<LinkedHashMap<String, Object>> selectTemplatePage(Page<DetectionTemplateInfo> page, DetectionTemplateInfo detectionTemplateInfo);
 
     /**
-     * 根据类型获取物料
+     * 根据类型获取项目模块
      *
      * @param type 类型（1.内部 2.外部 3.专家）
      * @return 结果

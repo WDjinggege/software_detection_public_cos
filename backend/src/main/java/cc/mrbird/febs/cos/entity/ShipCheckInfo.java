@@ -40,12 +40,12 @@ public class ShipCheckInfo implements Serializable {
     private String name;
 
     /**
-     * 物料ID
+     * 项目模块ID
      */
     private Integer materielId;
 
     /**
-     * 物料名称
+     * 项目模块名称
      */
     private String materielName;
 

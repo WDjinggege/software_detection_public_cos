@@ -44,7 +44,7 @@ public class OrderInfo implements Serializable {
     private String orderSource;
 
     /**
-     * 物料ID
+     * 项目模块ID
      */
     private Integer materielId;
 

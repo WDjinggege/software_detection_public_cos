@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 物料信息
+ * 项目模块信息
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */
@@ -28,12 +28,12 @@ public class MaterielInfo implements Serializable {
     private Integer id;
 
     /**
-     * 物料编码
+     * 项目模块编码
      */
     private String code;
 
     /**
-     * 物料名称
+     * 项目模块名称
      */
     private String name;
 
@@ -48,12 +48,12 @@ public class MaterielInfo implements Serializable {
     private String unit;
 
     /**
-     * 类型（0.物料 1.产品）
+     * 类型（0.项目模块 1.产品）
      */
     private String materielType;
 
     /**
-     * 所属分类（1.物料产品分类 2.PVC展板 3.灯片）
+     * 所属分类（1.项目模块产品分类 2.PVC展板 3.灯片）
      */
     private String materielSort;
 

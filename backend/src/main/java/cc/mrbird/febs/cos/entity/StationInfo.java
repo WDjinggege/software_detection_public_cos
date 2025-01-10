@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 工作站管理
+ * 测试环境管理
  *
  * @author Fank gmail - fan1ke2ke@gmail.com
  */
@@ -28,12 +28,12 @@ public class StationInfo implements Serializable {
     private Integer id;
 
     /**
-     * 工作站编号
+     * 测试环境编号
      */
     private String code;
 
     /**
-     * 工作站名称
+     * 测试环境名称
      */
     private String name;
 

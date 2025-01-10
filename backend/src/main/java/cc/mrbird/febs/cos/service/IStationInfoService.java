@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
 public interface IStationInfoService extends IService<StationInfo> {
 
     /**
-     * 分页获取工作站信息
+     * 分页获取测试环境信息
      *
      * @param page        分页对象
-     * @param stationInfo 工作站信息
+     * @param stationInfo 测试环境信息
      * @return 结果
      */
     IPage<LinkedHashMap<String, Object>> selectStationPage(Page<StationInfo> page, StationInfo stationInfo);

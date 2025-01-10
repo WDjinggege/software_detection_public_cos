@@ -40,17 +40,17 @@ public class IncomeCheckInfo implements Serializable {
     private String name;
 
     /**
-     * 物料ID
+     * 项目模块ID
      */
     private Integer materielId;
 
     /**
-     * 物料编码
+     * 项目模块编码
      */
     private String materielCode;
 
     /**
-     * 物料名称
+     * 项目模块名称
      */
     private String materielName;
 

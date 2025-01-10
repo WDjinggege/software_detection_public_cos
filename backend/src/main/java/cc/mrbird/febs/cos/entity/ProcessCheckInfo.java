@@ -55,12 +55,12 @@ public class ProcessCheckInfo implements Serializable {
     private String orderName;
 
     /**
-     * 工作站ID
+     * 测试环境ID
      */
     private Integer stationId;
 
     /**
-     * 工作站名称
+     * 测试环境名称
      */
     private String stationName;
 
@@ -70,12 +70,12 @@ public class ProcessCheckInfo implements Serializable {
     private Integer checkNum;
 
     /**
-     * 物料ID
+     * 项目模块ID
      */
     private Integer materielId;
 
     /**
-     * 物料名称
+     * 项目模块名称
      */
     private String materielName;
 
