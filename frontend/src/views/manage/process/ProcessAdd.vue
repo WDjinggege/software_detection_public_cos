@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增过程检测信息" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="新增外部检测信息" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -34,7 +34,7 @@
           </a-form-item>
         </a-col>
         <a-divider orientation="left">
-          <span style="font-size: 13px;font-family: SimHei">工单与工作站</span>
+          <span style="font-size: 13px;font-family: SimHei">工单与环境</span>
         </a-divider>
         <a-col :span="8">
           <a-form-item label='选择工单' v-bind="formItemLayout">
@@ -63,28 +63,28 @@
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='选择工作站' v-bind="formItemLayout">
+          <a-form-item label='选择环境' v-bind="formItemLayout">
             <a-select @change="stationChange" v-decorator="[
               'stationId',
-              { rules: [{ required: true, message: '请输入工作站!' }] }
+              { rules: [{ required: true, message: '请输入环境!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in stationList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='工作站名称' disabled v-bind="formItemLayout">
+          <a-form-item label='环境名称' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'stationName',
-            { rules: [{ required: true, message: '请输入工作站名称!' }] }
+            { rules: [{ required: true, message: '请输入环境名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='工作站编号' disabled v-bind="formItemLayout">
+          <a-form-item label='环境编号' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'stationCode',
-            { rules: [{ required: true, message: '请输入工作站编号!' }] }
+            { rules: [{ required: true, message: '请输入环境编号!' }] }
             ]"/>
           </a-form-item>
         </a-col>
@@ -100,40 +100,40 @@
           <span style="font-size: 13px;font-family: SimHei">更多信息</span>
         </a-divider>
         <a-col :span="6">
-          <a-form-item label='选择物料' v-bind="formItemLayout">
+          <a-form-item label='选择模块' v-bind="formItemLayout">
             <a-select @change="materielChange" v-decorator="[
               'materielId',
-              { rules: [{ required: true, message: '请输入物料!' }] }
+              { rules: [{ required: true, message: '请输入模块!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in materielList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料编码' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块编码' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielCode',
-            { rules: [{ required: true, message: '请输入产品物料!' }] }
+            { rules: [{ required: true, message: '请输入产品模块!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料名称' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块名称' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielName',
-            { rules: [{ required: true, message: '请输入产品物料名称!' }] }
+            { rules: [{ required: true, message: '请输入产品模块名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='单位' disabled v-bind="formItemLayout">
+          <a-form-item label='模块等级' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'unit'
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label='规格型号' disabled v-bind="formItemLayout">
+          <a-form-item label='模块介绍' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'model'
             ]"/>

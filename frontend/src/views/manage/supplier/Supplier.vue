@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="供应商编码"
+                label="机构编码"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.code"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="供应商名称"
+                label="机构名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.name"/>
@@ -130,31 +130,31 @@ export default {
     }),
     columns () {
       return [{
-        title: '供应商编码',
+        title: '机构编码',
         dataIndex: 'code'
       }, {
-        title: '供应商名称',
+        title: '机构名称',
         dataIndex: 'name'
       }, {
         title: '简称',
         dataIndex: 'abbreviation'
       }, {
-        title: '供应商等级',
+        title: '机构等级',
         dataIndex: 'supplierLevel',
         customRender: (text, row, index) => {
           switch (text) {
             case '1':
-              return <a-tag>一级供应商</a-tag>
+              return <a-tag>一级机构</a-tag>
             case '2':
-              return <a-tag>二级供应商</a-tag>
+              return <a-tag>二级机构</a-tag>
             case '3':
-              return <a-tag>三级供应商</a-tag>
+              return <a-tag>三级机构</a-tag>
             default:
               return '- -'
           }
         }
       }, {
-        title: '供应商评分',
+        title: '机构评分',
         dataIndex: 'score',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -226,7 +226,7 @@ export default {
     },
     handlesupplierAddSuccess () {
       this.supplierAdd.visiable = false
-      this.$message.success('新增供应商成功')
+      this.$message.success('新增机构成功')
       this.search()
     },
     edit (record) {
@@ -238,7 +238,7 @@ export default {
     },
     handlesupplierEditSuccess () {
       this.supplierEdit.visiable = false
-      this.$message.success('修改供应商成功')
+      this.$message.success('修改机构成功')
       this.search()
     },
     handleDeptChange (value) {

@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增物料信息" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="新增模块信息" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,36 +11,36 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='物料名称' v-bind="formItemLayout">
+          <a-form-item label='模块名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'name',
-            { rules: [{ required: true, message: '请输入物料名称!' }] }
+            { rules: [{ required: true, message: '请输入模块名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='单位' v-bind="formItemLayout">
+          <a-form-item label='模块等级' v-bind="formItemLayout">
             <a-input v-decorator="[
             'unit',
-            { rules: [{ required: true, message: '请输入单位!' }] }
+            { rules: [{ required: true, message: '请输入模块等级!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='规格型号' v-bind="formItemLayout">
+          <a-form-item label='模块介绍' v-bind="formItemLayout">
             <a-input v-decorator="[
             'model',
-            { rules: [{ required: true, message: '请输入规格型号!' }] }
+            { rules: [{ required: true, message: '请输入模块介绍!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='物料类型' v-bind="formItemLayout">
+          <a-form-item label='模块类型' v-bind="formItemLayout">
             <a-select v-decorator="[
               'materielType',
-              { rules: [{ required: true, message: '请输入物料类型!' }] }
+              { rules: [{ required: true, message: '请输入模块类型!' }] }
               ]">
-              <a-select-option value="0">物料</a-select-option>
+              <a-select-option value="0">模块</a-select-option>
               <a-select-option value="1">产品</a-select-option>
             </a-select>
           </a-form-item>
@@ -51,15 +51,15 @@
               'materielSort',
               { rules: [{ required: true, message: '请输入所属分类!' }] }
               ]">
-              <a-select-option value="1">发动机</a-select-option>
-              <a-select-option value="2">PVC展板</a-select-option>
-              <a-select-option value="3">灯片</a-select-option>
-              <a-select-option value="4">原材料</a-select-option>
-              <a-select-option value="5">外协件物料</a-select-option>
-              <a-select-option value="6">自制件物料</a-select-option>
-              <a-select-option value="7">商品</a-select-option>
-              <a-select-option value="8">资产类物料</a-select-option>
-              <a-select-option value="9">服务类物料</a-select-option>
+              <a-select-option value="1">工单信息</a-select-option>
+              <a-select-option value="2">流程管理</a-select-option>
+              <a-select-option value="3">任务分配</a-select-option>
+              <a-select-option value="4">报表统计</a-select-option>
+              <a-select-option value="5">系统设置</a-select-option>
+              <a-select-option value="6">外部接口</a-select-option>
+              <a-select-option value="7">数据维护</a-select-option>
+              <a-select-option value="8">定时任务</a-select-option>
+              <a-select-option value="9">敏感数据</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>

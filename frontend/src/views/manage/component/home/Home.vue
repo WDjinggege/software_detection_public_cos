@@ -56,7 +56,7 @@
         </div>
       </a-col>
     </a-row>
-    <a @click="orderMapOpen">统计看板</a>
+    <a @click="orderMapOpen" style="margin-top: 15px">统计看板</a>
     <a-row style="margin-top: 15px" :gutter="16">
       <a-col :span="12">
         <a-card hoverable :bordered="false" style="width: 100%">
@@ -308,15 +308,15 @@ export default {
         r.data.paymentRecord1.forEach(obj => {
           values1.push({x: obj.days, y: obj.amount})
         })
-        let itemData1 = { name: '来料检测', data: values1 }
+        let itemData1 = { name: '内部检测', data: values1 }
         r.data.paymentRecord2.forEach(obj => {
           values2.push({x: obj.days, y: obj.amount})
         })
-        let itemData2 = { name: '过程检测', data: values2 }
+        let itemData2 = { name: '外部检测', data: values2 }
         r.data.paymentRecord3.forEach(obj => {
           values3.push({x: obj.days, y: obj.amount})
         })
-        let itemData3 = { name: '出货检测', data: values3 }
+        let itemData3 = { name: '专家检测', data: values3 }
         series.push(itemData1)
         series.push(itemData2)
         series.push(itemData3)
@@ -329,15 +329,15 @@ export default {
         r.data.orderRecord1.forEach(obj => {
           values4.push({x: obj.days, y: obj.amount})
         })
-        let itemData4 = { name: '来料检测', data: values4 }
+        let itemData4 = { name: '内部检测', data: values4 }
         r.data.orderRecord2.forEach(obj => {
           values5.push({x: obj.days, y: obj.amount})
         })
-        let itemData5 = { name: '过程检测', data: values5 }
+        let itemData5 = { name: '外部检测', data: values5 }
         r.data.orderRecord3.forEach(obj => {
           values6.push({x: obj.days, y: obj.amount})
         })
-        let itemData6 = { name: '出货检测', data: values6 }
+        let itemData6 = { name: '专家检测', data: values6 }
         series1.push(itemData4)
         series1.push(itemData5)
         series1.push(itemData6)

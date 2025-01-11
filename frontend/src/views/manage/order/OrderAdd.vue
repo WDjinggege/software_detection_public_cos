@@ -35,10 +35,10 @@
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='选择物料' v-bind="formItemLayout">
+          <a-form-item label='选择模块' v-bind="formItemLayout">
             <a-select v-decorator="[
               'materielId',
-              { rules: [{ required: true, message: '请输入物料!' }] }
+              { rules: [{ required: true, message: '请输入模块!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in materielList" :key="index">{{ item.name }}</a-select-option>
             </a-select>

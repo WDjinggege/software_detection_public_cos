@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增来料检测信息" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="新增内部检测信息" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -19,60 +19,60 @@
           </a-form-item>
         </a-col>
         <a-divider orientation="left">
-          <span style="font-size: 13px;font-family: SimHei">物料与供应商</span>
+          <span style="font-size: 13px;font-family: SimHei">模块与机构</span>
         </a-divider>
         <a-col :span="6">
-          <a-form-item label='选择物料' v-bind="formItemLayout">
+          <a-form-item label='选择模块' v-bind="formItemLayout">
             <a-select @change="materielChange" v-decorator="[
               'materielId',
-              { rules: [{ required: true, message: '请输入物料!' }] }
+              { rules: [{ required: true, message: '请输入模块!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in materielList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料编码' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块编码' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielCode',
-            { rules: [{ required: true, message: '请输入产品物料!' }] }
+            { rules: [{ required: true, message: '请输入产品模块!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料名称' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块名称' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielName',
-            { rules: [{ required: true, message: '请输入产品物料名称!' }] }
+            { rules: [{ required: true, message: '请输入产品模块名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='单位' disabled v-bind="formItemLayout">
+          <a-form-item label='模块等级' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'unit'
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='供应商' v-bind="formItemLayout">
+          <a-form-item label='机构' v-bind="formItemLayout">
             <a-select @change="supplierChange" v-decorator="[
               'supplierId',
-              { rules: [{ required: true, message: '请输入供应商!' }] }
+              { rules: [{ required: true, message: '请输入机构!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in supplierList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='供应商简称' disabled v-bind="formItemLayout">
+          <a-form-item label='机构简称' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'abbreviation'
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='供应商批次号' disabled v-bind="formItemLayout">
+          <a-form-item label='机构批次号' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'batchNumber',
             ]"/>
@@ -82,18 +82,18 @@
           <span style="font-size: 13px;font-family: SimHei">检测情况</span>
         </a-divider>
         <a-col :span="8">
-          <a-form-item label='本次接收数量' disabled v-bind="formItemLayout">
+          <a-form-item label='本次检测数量' disabled v-bind="formItemLayout">
             <a-input-number :min="0" :max="99999" v-decorator="[
             'receiveQuantity',
-            { rules: [{ required: true, message: '请输入本次接收数量!' }] }
+            { rules: [{ required: true, message: '请输入本次检测数量!' }] }
             ]" style="width: 100%"/>
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='来料日期' disabled v-bind="formItemLayout">
+          <a-form-item label='内部日期' disabled v-bind="formItemLayout">
             <a-date-picker style="width: 100%;" v-decorator="[
             'incomingDate',
-            { rules: [{ required: true, message: '请输入来料日期!' }] }
+            { rules: [{ required: true, message: '请输入内部日期!' }] }
             ]"/>
           </a-form-item>
         </a-col>

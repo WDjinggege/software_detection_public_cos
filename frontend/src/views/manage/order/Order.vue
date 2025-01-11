@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="物料名称"
+                label="模块名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.materielName"/>
@@ -164,7 +164,7 @@ export default {
           }
         }
       }, {
-        title: '物料名称',
+        title: '模块名称',
         dataIndex: 'materielName',
         customRender: (text, row, index) => {
           if (text !== null) {

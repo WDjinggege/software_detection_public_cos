@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="产品物料"
+                label="产品模块"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.materielName"/>
@@ -153,15 +153,15 @@ export default {
         dataIndex: 'batchNumber',
         width: 180
       }, {
-        title: '产品物料名称',
+        title: '产品模块名称',
         dataIndex: 'materielName',
         width: 180
       }, {
-        title: '规格型号',
+        title: '模块介绍',
         dataIndex: 'model',
         width: 180
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit',
         width: 180
       }, {
@@ -220,7 +220,7 @@ export default {
         },
         width: 180
       }, {
-        title: '出货日期',
+        title: '专家检验日期',
         dataIndex: 'shipDate',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -275,7 +275,7 @@ export default {
     },
     handleshipAddSuccess () {
       this.shipAdd.visiable = false
-      this.$message.success('新增出货检测成功')
+      this.$message.success('新增专家检测成功')
       this.search()
     },
     edit (record) {
@@ -287,7 +287,7 @@ export default {
     },
     handleshipEditSuccess () {
       this.shipEdit.visiable = false
-      this.$message.success('修改出货检测成功')
+      this.$message.success('修改专家检测成功')
       this.search()
     },
     handleDeptChange (value) {

@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="出货检测详情" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="专家检测详情" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose" type="danger">
         关闭
@@ -14,19 +14,19 @@
         <a-col :span="8"><b>检验单名称：</b>
           {{ shipData.name ? shipData.name : '- -' }}
         </a-col>
-        <a-col :span="8"><b>产品物料编码：</b>
+        <a-col :span="8"><b>产品模块编码：</b>
           {{ shipData.materielCode ? shipData.materielCode : '- -' }}
         </a-col>
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>产品物料名称：</b>
+        <a-col :span="8"><b>产品模块名称：</b>
           {{ shipData.materielName }}
         </a-col>
-        <a-col :span="8"><b>单位：</b>
+        <a-col :span="8"><b>模块等级：</b>
           {{ shipData.unit }}
         </a-col>
-        <a-col :span="8"><b>规格型号：</b>
+        <a-col :span="8"><b>模块介绍：</b>
           {{ shipData.model }}
         </a-col>
       </a-row>
@@ -44,7 +44,7 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>出货日期：</b>
+        <a-col :span="8"><b>专家检验日期：</b>
           {{ shipData.shipDate }}
         </a-col>
       </a-row>
@@ -182,7 +182,7 @@ export default {
         title: '标准值',
         dataIndex: 'standardValue'
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit'
       }, {
         title: '误差上限',

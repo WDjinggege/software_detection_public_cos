@@ -25,10 +25,10 @@
                 <head-info title="客户数量" :content="titleData.clienteleNum" :center="false" :bordered="false"/>
               </a-col>
               <a-col :span="4">
-                <head-info title="工作站量" :content="titleData.stationNum" :center="false" :bordered="false"/>
+                <head-info title="环境量" :content="titleData.stationNum" :center="false" :bordered="false"/>
               </a-col>
               <a-col :span="4">
-                <head-info title="物料数量" :content="titleData.materielNum" :center="false"/>
+                <head-info title="模块数量" :content="titleData.materielNum" :center="false"/>
               </a-col>
             </a-row>
           </div>

@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="工作站编码"
+                label="环境编码"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.code"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="工作站名称"
+                label="环境名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.name"/>
@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="工作站地点"
+                label="环境地点"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.address"/>
@@ -130,13 +130,13 @@ export default {
     }),
     columns () {
       return [{
-        title: '工作站编码',
+        title: '环境编码',
         dataIndex: 'code'
       }, {
-        title: '工作站名称',
+        title: '环境名称',
         dataIndex: 'name'
       }, {
-        title: '工作站地点',
+        title: '环境地点',
         dataIndex: 'address',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -146,7 +146,7 @@ export default {
           }
         }
       }, {
-        title: '所属车间',
+        title: '所属服务器',
         dataIndex: 'workshop',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -218,7 +218,7 @@ export default {
     },
     handlestationAddSuccess () {
       this.stationAdd.visiable = false
-      this.$message.success('新增工作站成功')
+      this.$message.success('新增环境成功')
       this.search()
     },
     edit (record) {
@@ -230,7 +230,7 @@ export default {
     },
     handlestationEditSuccess () {
       this.stationEdit.visiable = false
-      this.$message.success('修改工作站成功')
+      this.$message.success('修改环境成功')
       this.search()
     },
     handleDeptChange (value) {

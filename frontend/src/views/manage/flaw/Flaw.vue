@@ -143,15 +143,15 @@ export default {
         customRender: (text, row, index) => {
           switch (text) {
             case '1':
-              return <a-tag>尺寸</a-tag>
+              return <a-tag>性能测试</a-tag>
             case '2':
-              return <a-tag>外观</a-tag>
+              return <a-tag>并发测试</a-tag>
             case '3':
-              return <a-tag>重量</a-tag>
+              return <a-tag>压力测试</a-tag>
             case '4':
-              return <a-tag>性能</a-tag>
+              return <a-tag>环境测试</a-tag>
             case '5':
-              return <a-tag>成分</a-tag>
+              return <a-tag>流程测试</a-tag>
             default:
               return '- -'
           }

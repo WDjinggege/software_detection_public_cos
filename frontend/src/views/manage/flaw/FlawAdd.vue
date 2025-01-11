@@ -24,11 +24,11 @@
               'detectionItem',
               { rules: [{ required: true, message: '请输入检测项类型!' }] }
               ]">
-              <a-select-option value="1">尺寸</a-select-option>
-              <a-select-option value="2">外观</a-select-option>
-              <a-select-option value="3">重量</a-select-option>
-              <a-select-option value="4">性能</a-select-option>
-              <a-select-option value="5">成分</a-select-option>
+              <a-select-option value="1">性能测试</a-select-option>
+              <a-select-option value="2">并发测试</a-select-option>
+              <a-select-option value="3">压力测试</a-select-option>
+              <a-select-option value="4">环境测试</a-select-option>
+              <a-select-option value="5">流程测试</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>

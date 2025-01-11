@@ -7,7 +7,7 @@
           <div :class="advanced ? null: 'fold'">
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="物料编码"
+                label="模块编码"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.code"/>
@@ -15,7 +15,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="物料名称"
+                label="模块名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.name"/>
@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="规格型号"
+                label="模块介绍"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.model"/>
@@ -31,7 +31,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="单位"
+                label="模块等级"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.unit"/>
@@ -138,13 +138,13 @@ export default {
     }),
     columns () {
       return [{
-        title: '物料编码',
+        title: '模块编码',
         dataIndex: 'code'
       }, {
-        title: '物料名称',
+        title: '模块名称',
         dataIndex: 'name'
       }, {
-        title: '规格型号',
+        title: '模块介绍',
         dataIndex: 'model',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -154,7 +154,7 @@ export default {
           }
         }
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -164,7 +164,7 @@ export default {
           }
         }
       }, {
-        title: '物料图片',
+        title: '模块图片',
         dataIndex: 'images',
         customRender: (text, record, index) => {
           if (!record.images) return <a-avatar shape="square" icon="user" />
@@ -181,7 +181,7 @@ export default {
         customRender: (text, row, index) => {
           switch (text) {
             case '0':
-              return <a-tag>物料</a-tag>
+              return <a-tag>模块</a-tag>
             case '1':
               return <a-tag>产品</a-tag>
             default:
@@ -194,23 +194,23 @@ export default {
         customRender: (text, row, index) => {
           switch (text) {
             case '1':
-              return <a-tag>发动机</a-tag>
+              return <a-tag>工单信息</a-tag>
             case '2':
-              return <a-tag>PVC展板</a-tag>
+              return <a-tag>流程管理</a-tag>
             case '3':
-              return <a-tag>灯片</a-tag>
+              return <a-tag>任务分配</a-tag>
             case '4':
-              return <a-tag>原材料</a-tag>
+              return <a-tag>报表统计</a-tag>
             case '5':
-              return <a-tag>外协件物料</a-tag>
+              return <a-tag>系统设置</a-tag>
             case '6':
-              return <a-tag>自制件物料</a-tag>
+              return <a-tag>外部接口</a-tag>
             case '7':
-              return <a-tag>商品</a-tag>
+              return <a-tag>数据维护</a-tag>
             case '8':
-              return <a-tag>资产类物料</a-tag>
+              return <a-tag>定时任务</a-tag>
             case '9':
-              return <a-tag>服务类物料</a-tag>
+              return <a-tag>敏感数据</a-tag>
             default:
               return '- -'
           }
@@ -268,7 +268,7 @@ export default {
     },
     handlematerielAddSuccess () {
       this.materielAdd.visiable = false
-      this.$message.success('新增物料成功')
+      this.$message.success('新增模块成功')
       this.search()
     },
     edit (record) {
@@ -280,7 +280,7 @@ export default {
     },
     handlematerielEditSuccess () {
       this.materielEdit.visiable = false
-      this.$message.success('修改物料成功')
+      this.$message.success('修改模块成功')
       this.search()
     },
     handleDeptChange (value) {

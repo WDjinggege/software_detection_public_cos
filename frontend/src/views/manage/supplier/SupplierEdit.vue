@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="修改供应商信息" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="修改机构信息" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,38 +11,38 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='供应商名称' v-bind="formItemLayout">
+          <a-form-item label='机构名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'name',
-            { rules: [{ required: true, message: '请输入供应商名称!' }] }
+            { rules: [{ required: true, message: '请输入机构名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='供应商简称' v-bind="formItemLayout">
+          <a-form-item label='机构简称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'abbreviation',
-            { rules: [{ required: true, message: '请输入供应商简称!' }] }
+            { rules: [{ required: true, message: '请输入机构简称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='供应商等级' v-bind="formItemLayout">
+          <a-form-item label='机构等级' v-bind="formItemLayout">
             <a-select v-decorator="[
               'supplierLevel',
-              { rules: [{ required: true, message: '请输入供应商等级!' }] }
+              { rules: [{ required: true, message: '请输入机构等级!' }] }
               ]">
-              <a-select-option value="1">一级供应商</a-select-option>
-              <a-select-option value="2">二级供应商</a-select-option>
-              <a-select-option value="3">三级供应商</a-select-option>
+              <a-select-option value="1">一级机构</a-select-option>
+              <a-select-option value="2">二级机构</a-select-option>
+              <a-select-option value="3">三级机构</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='供应商评分' v-bind="formItemLayout">
+          <a-form-item label='机构评分' v-bind="formItemLayout">
             <a-input-number :min="0" :max="100" v-decorator="[
             'score',
-            { rules: [{ required: true, message: '请输入供应商评分!' }] }
+            { rules: [{ required: true, message: '请输入机构评分!' }] }
             ]" style="width: 100%"/>
           </a-form-item>
         </a-col>

@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="产品物料"
+                label="产品模块"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.materielName"/>
@@ -137,27 +137,27 @@ export default {
     }),
     columns () {
       return [{
-        title: '来料检验单编码',
+        title: '内部检验单编码',
         dataIndex: 'code',
         width: 180
       }, {
-        title: '来料检验单名称',
+        title: '内部检验单名称',
         dataIndex: 'name',
         width: 180
       }, {
-        title: '供应商简称',
+        title: '机构简称',
         dataIndex: 'abbreviation',
         width: 180
       }, {
-        title: '供应商批次号',
+        title: '机构批次号',
         dataIndex: 'batchNumber',
         width: 180
       }, {
-        title: '产品物料编码',
+        title: '产品模块编码',
         dataIndex: 'materielCode',
         width: 180
       }, {
-        title: '产品物料名称',
+        title: '产品模块名称',
         dataIndex: 'materielName',
         width: 180
       }, {
@@ -212,7 +212,7 @@ export default {
         },
         width: 180
       }, {
-        title: '来料日期',
+        title: '内部日期',
         dataIndex: 'incomingDate',
         customRender: (text, row, index) => {
           if (text !== null) {
@@ -267,7 +267,7 @@ export default {
     },
     handleincomeAddSuccess () {
       this.incomeAdd.visiable = false
-      this.$message.success('新增来料检测成功')
+      this.$message.success('新增内部检测成功')
       this.search()
     },
     edit (record) {
@@ -279,7 +279,7 @@ export default {
     },
     handleincomeEditSuccess () {
       this.incomeEdit.visiable = false
-      this.$message.success('修改来料检测成功')
+      this.$message.success('修改内部检测成功')
       this.search()
     },
     handleDeptChange (value) {

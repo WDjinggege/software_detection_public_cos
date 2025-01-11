@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="新增出货检测信息" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="新增专家检测信息" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -19,43 +19,43 @@
           </a-form-item>
         </a-col>
         <a-divider orientation="left">
-          <span style="font-size: 13px;font-family: SimHei">物料与客户</span>
+          <span style="font-size: 13px;font-family: SimHei">模块与客户</span>
         </a-divider>
         <a-col :span="6">
-          <a-form-item label='选择物料' v-bind="formItemLayout">
+          <a-form-item label='选择模块' v-bind="formItemLayout">
             <a-select @change="materielChange" v-decorator="[
               'materielId',
-              { rules: [{ required: true, message: '请输入物料!' }] }
+              { rules: [{ required: true, message: '请输入模块!' }] }
               ]">
               <a-select-option :value="item.id" v-for="(item, index) in materielList" :key="index">{{ item.name }}</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料编码' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块编码' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielCode',
-            { rules: [{ required: true, message: '请输入产品物料!' }] }
+            { rules: [{ required: true, message: '请输入产品模块!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='产品物料名称' disabled v-bind="formItemLayout">
+          <a-form-item label='产品模块名称' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'materielName',
-            { rules: [{ required: true, message: '请输入产品物料名称!' }] }
+            { rules: [{ required: true, message: '请输入产品模块名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="6">
-          <a-form-item label='单位' disabled v-bind="formItemLayout">
+          <a-form-item label='模块等级' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'unit'
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label='规格型号' disabled v-bind="formItemLayout">
+          <a-form-item label='模块介绍' disabled v-bind="formItemLayout">
             <a-input v-decorator="[
             'model'
             ]"/>
@@ -104,10 +104,10 @@
           </a-form-item>
         </a-col>
         <a-col :span="8">
-          <a-form-item label='出货日期' disabled v-bind="formItemLayout">
+          <a-form-item label='专家检验日期' disabled v-bind="formItemLayout">
             <a-date-picker style="width: 100%;" v-decorator="[
             'shipDate',
-            { rules: [{ required: true, message: '请输入出货日期!' }] }
+            { rules: [{ required: true, message: '请输入专家检验日期!' }] }
             ]"/>
           </a-form-item>
         </a-col>

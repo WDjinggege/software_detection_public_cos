@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="来料检测详情" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="内部检测详情" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose" type="danger">
         关闭
@@ -14,31 +14,31 @@
         <a-col :span="8"><b>检验单名称：</b>
           {{ incomeData.name ? incomeData.name : '- -' }}
         </a-col>
-        <a-col :span="8"><b>产品物料编码：</b>
+        <a-col :span="8"><b>产品模块编码：</b>
           {{ incomeData.materielCode ? incomeData.materielCode : '- -' }}
         </a-col>
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>产品物料名称：</b>
+        <a-col :span="8"><b>产品模块名称：</b>
           {{ incomeData.materielName }}
         </a-col>
-        <a-col :span="8"><b>单位：</b>
+        <a-col :span="8"><b>模块等级：</b>
           {{ incomeData.unit }}
         </a-col>
-        <a-col :span="8"><b>供应商编码：</b>
+        <a-col :span="8"><b>机构编码：</b>
           {{ incomeData.supplierName }}
         </a-col>
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>供应商简称：</b>
+        <a-col :span="8"><b>机构简称：</b>
           {{ incomeData.abbreviation }}
         </a-col>
-        <a-col :span="8"><b>供应商批次号：</b>
+        <a-col :span="8"><b>机构批次号：</b>
           {{ incomeData.batchNumber }}
         </a-col>
-        <a-col :span="8"><b>本次接收数量：</b>
+        <a-col :span="8"><b>本次检测数量：</b>
           {{ incomeData.receiveQuantity }}
         </a-col>
       </a-row>
@@ -92,7 +92,7 @@
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>供应商名称：</b>
+        <a-col :span="8"><b>机构名称：</b>
           {{ incomeData.supplierName }}
         </a-col>
         <a-col :span="8"><b>检测人员：</b>
@@ -182,7 +182,7 @@ export default {
         title: '标准值',
         dataIndex: 'standardValue'
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit'
       }, {
         title: '误差上限',

@@ -23,7 +23,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="工作站名称"
+                label="环境名称"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.stationName"/>
@@ -31,7 +31,7 @@
             </a-col>
             <a-col :md="6" :sm="24">
               <a-form-item
-                label="产品物料"
+                label="产品模块"
                 :labelCol="{span: 5}"
                 :wrapperCol="{span: 18, offset: 1}">
                 <a-input v-model="queryParams.materielName"/>
@@ -179,15 +179,15 @@ export default {
         },
         width: 180
       }, {
-        title: '产品物料名称',
+        title: '产品模块名称',
         dataIndex: 'materielName',
         width: 180
       }, {
-        title: '规格型号',
+        title: '模块介绍',
         dataIndex: 'model',
         width: 180
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit',
         width: 180
       }, {
@@ -293,7 +293,7 @@ export default {
     },
     handleprocessAddSuccess () {
       this.processAdd.visiable = false
-      this.$message.success('新增过程检测成功')
+      this.$message.success('新增外部检测成功')
       this.search()
     },
     edit (record) {
@@ -305,7 +305,7 @@ export default {
     },
     handleprocessEditSuccess () {
       this.processEdit.visiable = false
-      this.$message.success('修改过程检测成功')
+      this.$message.success('修改外部检测成功')
       this.search()
     },
     handleDeptChange (value) {

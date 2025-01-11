@@ -12,29 +12,33 @@
     <dv-border-box-11 title="欢迎各位领导莅临指导" style="height: 100vh;width: 100%;background: #333333">
       <a-row style="padding: 50px;padding-top: 100px;color: white">
         <a-col :span="12">
-          <div class="left-chart-1">
-            <div class="lc1-details" style="color: white">来料检验统计</div>
+          <a-skeleton active v-if="loading" />
+          <div v-if="!loading" class="left-chart-1">
+            <div class="lc1-details" style="color: white">内部检验统计</div>
             <dv-capsule-chart class="lc1-chart" :config="config" style="height: 300px"/>
           </div>
         </a-col>
         <a-col :span="12">
-          <div class="right-chart-1">
+          <a-skeleton active v-if="loading" />
+          <div v-if="!loading" class="right-chart-1">
             <div class="rc1-chart-container">
               <div class="left" style="color: white">
-                <div>过程检验统计</div>
+                <div>外部检验统计</div>
               </div>
               <dv-capsule-chart class="right" :config="config2" style="height: 300px"/>
             </div>
           </div>
         </a-col>
         <a-col :span="12" style="margin-top: 60px">
-          <div class="left-chart-3">
-            <div class="lc3-details">出货检验统计</div>
+          <a-skeleton active v-if="loading" />
+          <div v-if="!loading" class="left-chart-3">
+            <div class="lc3-details">专家检验统计</div>
             <dv-capsule-chart class="lc3-chart" :config="config3" style="height: 300px"/>
           </div>
         </a-col>
         <a-col :span="12" style="margin-top: 60px">
-          <div class="rc1-chart-container">
+          <a-skeleton active v-if="loading" />
+          <div v-if="!loading" class="rc1-chart-container">
             <div class="left">
               <div>检测合格统计</div>
             </div>
@@ -68,14 +72,15 @@ export default {
   },
   data () {
     return {
+      loading: true,
       option: {
         series: [
           {
             type: 'pie',
             data: [
-              { name: '来料检验', value: 93 },
-              { name: '过程检验', value: 66 },
-              { name: '出货检验', value: 52 }
+              { name: '内部检验', value: 93 },
+              { name: '外部检验', value: 66 },
+              { name: '专家检验', value: 52 }
             ],
             radius: ['45%', '65%'],
             insideLabel: {
@@ -117,7 +122,7 @@ export default {
           }
         ],
         colors: ['#00baff', '#3de7c9', '#fff', '#ffc530', '#469f4b'],
-        unit: '件'
+        unit: '条'
       },
       config2: {
         data: [
@@ -142,7 +147,7 @@ export default {
             value: 99
           }
         ],
-        unit: '件'
+        unit: '条'
       },
       config3: {
         data: [
@@ -168,12 +173,13 @@ export default {
           }
         ],
         colors: ['#00baff', '#3de7c9', '#fff', '#ffc530', '#469f4b'],
-        unit: '件'
+        unit: '条'
       }
     }
   },
   methods: {
     selectBoard () {
+      this.loading = true
       this.$get(`/cos/materiel-info/selectBoard`).then((r) => {
         let incomeDate = []
         let incomeItem1 = {name: '接收数量', value: r.data.incomeReceive}
@@ -187,10 +193,10 @@ export default {
         this.config.data = incomeDate
 
         let processDate = []
-        let processItem1 = {name: '接收数量', value: r.data.processReceive}
-        let processItem2 = {name: '检测数量', value: r.data.processTotal}
-        let processItem3 = {name: '合格数量', value: r.data.processQualified}
-        let processItem4 = {name: '不合格数量', value: r.data.processNoQualified}
+        let processItem1 = {name: '接收数量', value: r.data.processReceive ? r.data.processReceive : 0}
+        let processItem2 = {name: '检测数量', value: r.data.processTotal ? r.data.processTotal : 0}
+        let processItem3 = {name: '合格数量', value: r.data.processQualified ? r.data.processQualified : 0}
+        let processItem4 = {name: '不合格数量', value: r.data.processNoQualified ? r.data.processNoQualified : 0}
         processDate.push(processItem1)
         processDate.push(processItem2)
         processDate.push(processItem3)
@@ -198,23 +204,26 @@ export default {
         this.config2.data = processDate
 
         let shipDate = []
-        let shipItem1 = {name: '接收数量', value: r.data.shipReceive}
-        let shipItem2 = {name: '检测数量', value: r.data.shipTotal}
-        let shipItem3 = {name: '合格数量', value: r.data.shipQualified}
-        let shipItem4 = {name: '不合格数量', value: r.data.shipNoQualified}
+        let shipItem1 = {name: '接收数量', value: r.data.shipReceive ? r.data.shipReceive : 0}
+        let shipItem2 = {name: '检测数量', value: r.data.shipTotal ? r.data.shipTotal : 0}
+        let shipItem3 = {name: '合格数量', value: r.data.shipQualified ? r.data.shipQualified : 0}
+        let shipItem4 = {name: '不合格数量', value: r.data.shipNoQualified ? r.data.shipNoQualified : 0}
         shipDate.push(shipItem1)
         shipDate.push(shipItem2)
         shipDate.push(shipItem3)
         shipDate.push(shipItem4)
         this.config3.data = shipDate
+        console.log(this.config3.data)
 
         let rateDate = []
-        let rateItem1 = {name: '来料检验', value: r.data.incomeQualified}
-        let rateItem2 = {name: '过程检验', value: r.data.processQualified}
-        let rateItem3 = {name: '出货检验', value: r.data.shipQualified}
+        let rateItem1 = {name: '内部检验', value: r.data.incomeQualified ? r.data.incomeQualified : 0}
+        let rateItem2 = {name: '外部检验', value: r.data.processQualified ? r.data.processQualified : 0}
+        let rateItem3 = {name: '专家检验', value: r.data.shipQualified ? r.data.shipQualified : 0}
         rateDate.push(rateItem1)
         rateDate.push(rateItem2)
         rateDate.push(rateItem3)
+        this.option.series[0].data = rateDate
+        this.loading = false
       })
     },
     home () {

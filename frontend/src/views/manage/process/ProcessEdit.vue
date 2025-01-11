@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="填报过程检测信息" @cancel="onClose" :width="950">
+  <a-modal v-model="show" title="填报外部检测信息" @cancel="onClose" :width="950">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -34,13 +34,13 @@
         <a-col :span="8"><b>工单名称：</b>
           {{ processData.orderName }}
         </a-col>
-        <a-col :span="8"><b>工作站编号：</b>
+        <a-col :span="8"><b>环境编号：</b>
           {{ processData.stationCode }}
         </a-col>
       </a-row>
       <br/>
       <a-row style="padding-left: 24px;padding-right: 24px;">
-        <a-col :span="8"><b>工作站名称：</b>
+        <a-col :span="8"><b>环境名称：</b>
           {{ processData.stationName }}
         </a-col>
         <a-col :span="8"><b>检测数量：</b>
@@ -55,10 +55,10 @@
         <a-col :span="8"><b>产品名称：</b>
           {{ processData.materielName }}
         </a-col>
-        <a-col :span="8"><b>单位：</b>
+        <a-col :span="8"><b>模块等级：</b>
           {{ processData.unit }}
         </a-col>
-        <a-col :span="8"><b>规格型号：</b>
+        <a-col :span="8"><b>模块介绍：</b>
           {{ processData.model }}
         </a-col>
       </a-row>
@@ -255,7 +255,7 @@ export default {
         dataIndex: 'standardValue',
         scopedSlots: {customRender: 'standardValueField'}
       }, {
-        title: '单位',
+        title: '模块等级',
         dataIndex: 'unit',
         scopedSlots: {customRender: 'unitField'}
       }, {
@@ -312,7 +312,7 @@ export default {
           item.content = ''
           item.checkRequire = '/'
           item.standardValue = '100'
-          item.unit = '个'
+          item.unit = '一级'
         })
         this.checkItem = r.data.data
       })

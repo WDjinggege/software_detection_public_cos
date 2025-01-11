@@ -1,5 +1,5 @@
 <template>
-  <a-modal v-model="show" title="修改工作站信息" @cancel="onClose" :width="800">
+  <a-modal v-model="show" title="修改环境信息" @cancel="onClose" :width="800">
     <template slot="footer">
       <a-button key="back" @click="onClose">
         取消
@@ -11,26 +11,26 @@
     <a-form :form="form" layout="vertical">
       <a-row :gutter="20">
         <a-col :span="12">
-          <a-form-item label='工作站名称' v-bind="formItemLayout">
+          <a-form-item label='环境名称' v-bind="formItemLayout">
             <a-input v-decorator="[
             'name',
-            { rules: [{ required: true, message: '请输入工作站名称!' }] }
+            { rules: [{ required: true, message: '请输入环境名称!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='工作站地点' v-bind="formItemLayout">
+          <a-form-item label='环境地点' v-bind="formItemLayout">
             <a-input v-decorator="[
             'address',
-            { rules: [{ required: true, message: '请输入工作站地点!' }] }
+            { rules: [{ required: true, message: '请输入环境地点!' }] }
             ]"/>
           </a-form-item>
         </a-col>
         <a-col :span="12">
-          <a-form-item label='所属车间' v-bind="formItemLayout">
+          <a-form-item label='所属服务器' v-bind="formItemLayout">
             <a-input v-decorator="[
             'workshop',
-            { rules: [{ required: true, message: '请输入所属车间!' }] }
+            { rules: [{ required: true, message: '请输入所属服务器!' }] }
             ]"/>
           </a-form-item>
         </a-col>

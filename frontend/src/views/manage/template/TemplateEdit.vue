@@ -96,7 +96,7 @@ export default {
       checkedList: [],
       indeterminate: true,
       checkAll: false,
-      plainOptions: ['来料检验', '首检', '末检', '巡检', '成品检验', '发货检验']
+      plainOptions: ['内部检验', '首检', '末检', '巡检', '成品检验', '专家检验']
     }
   },
   methods: {
