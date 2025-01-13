@@ -33,6 +33,11 @@ public class StaffInfo implements Serializable {
     private String code;
 
     /**
+     * 员工角色（1.内部 2.外部 3.专家）
+     */
+    private String roleFlag;
+
+    /**
      * 员工姓名
      */
     private String name;

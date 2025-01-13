@@ -9,6 +9,7 @@
             si.code,
             si.name,
             si.sex,
+            si.role_flag,
             si.images,
             si.content,
             si.create_date

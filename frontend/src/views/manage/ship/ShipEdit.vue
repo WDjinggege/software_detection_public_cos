@@ -313,7 +313,7 @@ export default {
       })
     },
     selectStaffList () {
-      this.$get(`/cos/staff-info/list`).then((r) => {
+      this.$get(`/cos/staff-info/list/role/3`).then((r) => {
         this.staffList = r.data.data
       })
     },

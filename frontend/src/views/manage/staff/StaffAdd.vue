@@ -29,6 +29,18 @@
             </a-select>
           </a-form-item>
         </a-col>
+        <a-col :span="12">
+          <a-form-item label='员工角色' v-bind="formItemLayout">
+            <a-select v-decorator="[
+              'roleFlag',
+              { rules: [{ required: true, message: '请输入员工角色!' }] }
+              ]">
+              <a-select-option value="1">内部</a-select-option>
+              <a-select-option value="2">外部</a-select-option>
+              <a-select-option value="3">专家</a-select-option>
+            </a-select>
+          </a-form-item>
+        </a-col>
         <a-col :span="24">
           <a-form-item label='备注' v-bind="formItemLayout">
             <a-textarea :rows="4" v-decorator="[
